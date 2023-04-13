@@ -9,6 +9,7 @@ variables:
 steps:
   - checkout: self
     submodules: true
+    fetchDepth: 0
   - task: CmdLine@2
     inputs:
       script: |
