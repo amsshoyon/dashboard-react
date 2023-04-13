@@ -1,6 +1,6 @@
 {
   "name": "sndk7-statuspage-frontend",
-  "version": "1.21.0",
+  "version": "0.1.0",
   "scripts": {
     "start": "vite --host",
     "build": "vite build --base='./'",
