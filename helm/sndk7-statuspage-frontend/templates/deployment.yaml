@@ -23,32 +23,10 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: GQL_HTTP_URI
-              value: "{{ .Values.GQL_HTTP_URI }}"
-            - name: DOWNLOAD_HTTP_URI
-              value: "{{ .Values.DOWNLOAD_HTTP_URI }}"
+            - name: API_HTTP_URI
+              value: "{{ .Values.API_HTTP_URI }}"
             - name: LANGUAGE_HTTP_URI
               value: "{{ .Values.LANGUAGE_HTTP_URI }}"
-            - name: ACTIVATE_ENTITLEMENTS_DEBUG
-              value: "{{ .Values.ACTIVATE_ENTITLEMENTS_DEBUG }}"
-            - name: CURRENT_SPRINT
-              value: "{{ .Values.CURRENT_SPRINT }}"
-            - name: RANGES_WITH_ERROR_LINK
-              value: "{{ .Values.RANGES_WITH_ERROR_LINK }}"
-            - name: TRACE_SERVICE_NAME
-              value: "{{ .Values.TRACE_SERVICE_NAME }}"
-            - name: SHOW_DEPUTY_FEATURE
-              value: "{{ .Values.SHOW_DEPUTY_FEATURE }}"
-            - name: SHOW_SIMULATION_FEATURE
-              value: "{{ .Values.SHOW_SIMULATION_FEATURE }}"
-            - name: SHOW_TRACE_FEATURE
-              value: "{{ .Values.SHOW_TRACE_FEATURE }}"
-            - name: SHOW_CACHE_FEATURE
-              value: "{{ .Values.SHOW_CACHE_FEATURE }}"
-            - name: SHOW_LIST_RANGE_CALC_FEATURE
-              value: "{{ .Values.SHOW_LIST_RANGE_CALC_FEATURE }}"
-            - name: TRACE_URI
-              value: "{{ .Values.TRACE_URI }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.targetPort }}
