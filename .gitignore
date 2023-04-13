@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.idea
+yarn-error.log
+
+testing/storage
+cypress/videos/*
+cypress/downloads/
+cypress/screenshots/

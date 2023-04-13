@@ -1,0 +1,39 @@
+{
+  "general": {
+    "cancel": "Abbrechen",
+    "back": "Zurück",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "close": "Schließen",
+    "next": "Weiter",
+    "open": "Öffnen",
+    "show": "Anzeigen",
+    "optional": "Optional",
+    "update": "Aktualisieren",
+    "confirmationDialog": {
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "yes": "Ja",
+    "no": "Nein",
+    "defined": "Definiert",
+    "undefined": "Undefiniert"
+  },
+  "navigation": {
+    "dashboard": "Dashboard"
+  },
+  "dashboard": {
+    "headline": "Deployment-Status"
+  },
+  "statusEntry": {
+    "name": "Name",
+    "version": "Version",
+    "stage": "Stage",
+    "namespace": "Namespace",
+    "uptime": "Uptime"
+  },
+  "errors": {
+    "generic": "Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es (später) erneut"
+  }
+}

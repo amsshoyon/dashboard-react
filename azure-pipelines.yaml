@@ -1,0 +1,32 @@
+trigger:
+  - main
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight test run
+  branches:
+    include:
+      - main
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: sndk7/azure-pipeline-templates
+
+extends:
+  template: templates/default-buildkit-v2.yml@templates
+  parameters:
+    language: JAVASCRIPT
+    trivyScan: true
+    imageRepository: 'sndk7/statuspage-frontend'
+    buildOnly: false
+    helmChartPath: 'helm/sndk7-statuspage-frontend'
+    dockerfilePath: $(Build.SourcesDirectory)/dockerfile
+    npmAuthenticate: true
+    npmAuthenticateEndpoint: 'MercedesBenzNPMArtifacts'
+    sonarQubeServiceConnectionName: 'sonarqube'
+    componentName: 'Status-Page-Micro-Frontend'
+    componentKey: 'Status-Page-Micro-Frontend'
+    jiraXrayPat: 'MTA3MTAxNDk2MTM0OhyKvArX4vqGkbq6P1UDAalu4rz2'
+    versionSource: PACKAGE_JSON

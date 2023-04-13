@@ -1,0 +1,39 @@
+name: Helm
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:
+      - 'helm.*'
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  HARBOR_USER: ${{ secrets.HARBOR_USER }}
+  HELM_CHART_NAME: "sndk7-statuspage-frontend"
+  HARBOR_PASSWORD: ${{ secrets.HARBOR_PASSWORD }}
+  HARBOR_HELM_URL: ${{ secrets.HARBOR_HELM_URL }}
+
+jobs:
+  push:
+    runs-on: [ self-hosted ]
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: AutoModality/action-clean@v1
+
+      - uses: actions/checkout@v2
+
+      - name: Read helm chart version
+        run: |
+          CHART_VERSION=$(awk '/^version/{print $NF}' ./helm/${{ env.HELM_CHART_NAME }}/Chart.yaml)
+          echo "CHART_VERSION=$CHART_VERSION" >> $GITHUB_ENV
+
+      - name: Bundle & Publish Helm Chart
+        run: |
+          echo "./helm/${{ env.HELM_CHART_NAME }}"
+          helm dependency update ./helm/${{ env.HELM_CHART_NAME }}
+          helm package ./helm/${{ env.HELM_CHART_NAME }}
+          helm registry login '${{ env.HARBOR_HELM_URL }}' --username '${{ env.HARBOR_USER }}' --password '${{ env.HARBOR_PASSWORD }}'
+          helm push ./${{ env.HELM_CHART_NAME }}-${{ env.CHART_VERSION }}.tgz oci://${{ env.HARBOR_HELM_URL }}
