@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid/Grid'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { dashboardPageSlice } from './DashboardPage.slice'
 import { useAppDispatch, useAppSelector } from '@/store/store'
@@ -15,6 +15,16 @@ import { DeploymentStatusRowStages } from '@/components/DeploymentStatusRowStage
 export const DashboardPage = () => {
   const translationPrepend = 'dashboard'
   const { data, loading } = useAppSelector((state) => state.dashboard)
+  const uniqueStagesLookup = useMemo(() => {
+    const result: { [stage: string]: string } = {}
+
+    for (let singleData of data) {
+      for (let stage of singleData.stages) {
+        result[stage] = stage
+      }
+    }
+    return result
+  }, [data])
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
 
@@ -51,10 +61,7 @@ export const DashboardPage = () => {
       field: 'stage',
       width: 130,
       defaultSort: 'asc',
-      lookup: {
-        dev: 'dev',
-        int: 'int',
-      },
+      lookup: uniqueStagesLookup,
       customFilterAndSearch: (filter, rowData) => {
         if (!filter || filter.length === 0) {
           return true
