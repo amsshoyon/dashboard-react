@@ -15,7 +15,11 @@ const loadData = (): Observable<ApiResult<Array<DeploymentStatusRecord>>> => {
             method: 'GET',
           })
             .then((response) => {
-              return resolve(response.data)
+              const result: ApiResult<Array<DeploymentStatusRecord>> = {
+                result: response.data,
+                rawError: undefined,
+              }
+              return resolve(result)
             })
             .catch((error) => {
               reject(error)
