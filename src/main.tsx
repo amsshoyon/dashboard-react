@@ -7,7 +7,7 @@ import './localization/i18n'
 import { App } from './App'
 import { HashRouter } from 'react-router-dom'
 import { createRoot } from 'react-dom/client'
-import SplashScreenGateway from '@/components/SplashScreenGateway'
+// import SplashScreenGateway from '@/components/SplashScreenGateway'
 import { ThemeProvider } from '@/components/ThemeProvider.component'
 import { RouteByEventChanger } from '@/components/RouteByEventChanger.component'
 
@@ -22,9 +22,9 @@ root.render(
       <RouteByEventChanger />
       <Provider store={store}>
         <ThemeProvider>
-          <SplashScreenGateway>
+          {/* <SplashScreenGateway> */}
             <App />
-          </SplashScreenGateway>
+          {/* </SplashScreenGateway> */}
         </ThemeProvider>
       </Provider>
     </HashRouter>

@@ -4,8 +4,8 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable'
 import { EpicMiddlewareDependencies, GlobalState } from './store.types'
 import { userSettingsSlice } from '@/store/userSettings.slice'
 import { notificationSlice } from '@/store/notificationSlice'
-import { dashboardPageSlice } from '@/pages/dashboard/DashboardPage.slice'
-import { dashboardPageEffects } from '@/pages/dashboard/DashboardPage.effects'
+import { dashboardPageSlice } from '@/pages/dashboard_old/DashboardPage.slice'
+import { dashboardPageEffects } from '@/pages/dashboard_old/DashboardPage.effects'
 import { notificationsEffects } from '@/store/notification.effects'
 
 const reducer = combineReducers({

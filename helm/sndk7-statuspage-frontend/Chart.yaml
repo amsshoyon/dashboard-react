@@ -1,7 +1,0 @@
-apiVersion: v2
-name: sndk7-statuspage-frontend
-description: A Helm chart for running the SNDK7 StatusPage Frontend on Kubernetes
-
-type: application
-version: 0.1.27
-appVersion: 0.1.0
